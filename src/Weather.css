@@ -25,7 +25,7 @@ body {
 }
 .Weather{
     padding:0 14px 0 14px;
-   
+   margin:0 13px;
 }
 .Weather form.nosubmit {
   display: block;
