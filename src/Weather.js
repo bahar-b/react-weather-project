@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import HandleDate from "./HandleDate"
 import axios from "axios";
 import "./Weather.css";
 import ReactLoading from "react-loading";
@@ -7,7 +8,6 @@ export default function Weather() {
   const [load, setLoad] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   function showForcast(response) {
-    console.log(response.data);
     setLoad(true);
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
@@ -17,7 +17,7 @@ export default function Weather() {
       country: response.data.sys.country,
       description: response.data.weather[0].description,
       icon: "http://openweathermap.org/img/wn/04d@2x.png",
-      date: "6:30 AM",
+      date:new Date(response.data.dt * 1000),
     });
   }
   if (load) {
@@ -69,7 +69,9 @@ export default function Weather() {
           </span>
         </div>
         <div className="row upadting">
-          <p>Updated {weatherData.date}</p>
+          <p>
+            <HandleDate date={weatherData.date}/>
+          </p>
         </div>
         <div className="row align-items-start column-group">
           <div className="col forcast-columns">
