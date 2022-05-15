@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import ReactLoading from "react-loading";
 
 export default function Weather() {
   const [load, setLoad] = useState(false);
@@ -135,6 +136,11 @@ export default function Weather() {
     let city = "London";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showForcast);
-    return "loading...";
+    <ReactLoading
+      type="bubbles"
+      color="#ffe168"
+      height={"20%"}
+      width={"20%"}
+    />;
   }
 }
