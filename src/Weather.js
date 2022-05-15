@@ -3,12 +3,21 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  const [weatherData, useweatherData] = useState("");
-  const [load, setload] = useState(false);
+  const [load, setLoad] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
   function showForcast(response) {
     console.log(response.data);
-    setload(true);
-    useweatherData(Math.round(response.data.main.temp));
+    setLoad(true);
+    setWeatherData({
+      temperature: Math.round(response.data.main.temp),
+      tempMax: Math.round(response.data.main.temp_max),
+      tempMin: Math.round(response.data.main.temp_min),
+      city: response.data.name,
+      country: response.data.sys.country,
+      description: response.data.weather[0].description,
+      icon: "http://openweathermap.org/img/wn/04d@2x.png",
+      date: "6:30 AM",
+    });
   }
   if (load) {
     return (
@@ -25,7 +34,7 @@ export default function Weather() {
           <div className="col-6">
             <div className="weather-condition active">
               <h1>
-                <span className="temperature">{weatherData}</span>°
+                <span className="temperature">{weatherData.temperature}</span>°
                 <a href="/" className="celsius">
                   C
                 </a>
@@ -35,30 +44,31 @@ export default function Weather() {
                 </a>
               </h1>
               <h2>
-                <span>10</span>° / <span>13</span>°
+                <span>{weatherData.tempMin}</span>° /{" "}
+                <span>{weatherData.tempMax}</span>°
               </h2>
             </div>
           </div>
           <div className="col-6">
             <div className="icon-icon ">
               <img
+                src={weatherData.icon}
+                alt={weatherData.description}
                 className="icon"
                 id="icon"
-                alt="Mostly cloudy"
-                src="http://openweathermap.org/img/wn/04d@2x.png"
               />
             </div>
-            <div className="weather-description">clear</div>
+            <div className="weather-description">{weatherData.description}</div>
           </div>
         </div>
         <div className="row">
           <span className="location text-center">
-            <span className="city"> Tehran</span> ,
-            <span className="country"> Iran </span>
+            <span className="city"> {weatherData.city}</span> ,
+            <span className="country"> {weatherData.country} </span>
           </span>
         </div>
         <div className="row upadting">
-          <p>Updated 6:30 AM</p>
+          <p>Updated {weatherData.date}</p>
         </div>
         <div className="row align-items-start column-group">
           <div className="col forcast-columns">
