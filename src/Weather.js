@@ -17,7 +17,7 @@ export default function Weather(props) {
       city: response.data.name,
       country: response.data.sys.country,
       description: response.data.weather[0].description,
-      icon: "http://openweathermap.org/img/wn/04d@2x.png",
+      icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
     });
   }
