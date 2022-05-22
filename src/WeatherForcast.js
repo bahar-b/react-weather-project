@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import WeatherForcastDaily from  "./WeatherForcastDaily"
 
 export default function WeatherForcast(props){
     function handleForcast(response){
@@ -12,15 +13,9 @@ export default function WeatherForcast(props){
      axios.get(apiUrl).then(handleForcast);
     return (
       <div className="WeatherForcast">
-        <div className="row align-items-start column-group">
+        <div className="row column-group">
           <div className="col forcast-columns">
-            Sun,9
-            <br />
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt=""
-            />
-            <br />5 / 10
+              <WeatherForcastDaily />
           </div>
           <div className="col forcast-columns">
             Mon,10
