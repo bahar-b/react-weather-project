@@ -1,6 +1,7 @@
 import React from "react";
 import HandleDate from "./HandleDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherUnits from "./WeatherUnits";
 
 export default function WeatherInfo(props){
     return (
@@ -8,20 +9,7 @@ export default function WeatherInfo(props){
         <div className="row">
           <div className="col-6">
             <div className="weather-condition active">
-              <h1>
-                <span className="temperature">{props.data.temperature}</span>°
-                <a href="/" className="celsius">
-                  C
-                </a>
-                |°
-                <a href="/" className="fahrenheit">
-                  F
-                </a>
-              </h1>
-              <h2>
-                <span>{props.data.tempMin}</span>° /{" "}
-                <span>{props.data.tempMax}</span>°
-              </h2>
+              <WeatherUnits units={props.data}/>
             </div>
           </div>
           <div className="col-6">
