@@ -9,6 +9,7 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({});
   const [city, setCity] = useState(props.defaultCity);
   function showForcast(response) {
+    console.log(response.data.coord);
     setLoad(true);
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
@@ -16,6 +17,7 @@ export default function Weather(props) {
       tempMin: Math.round(response.data.main.temp_min),
       city: response.data.name,
       country: response.data.sys.country,
+      coordinate:response.data.coord,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),

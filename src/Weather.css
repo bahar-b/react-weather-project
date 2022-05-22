@@ -71,7 +71,7 @@ body {
 }
 .Weather .icon {
   display: block;
-  margin-top: 57px;
+  margin-top: 47px;
   padding-left: 56px;
 }
 .Weather .weather-description {
@@ -83,7 +83,7 @@ body {
   font-size: 30px;
 }
 .Weather .upadting p {
-  font-size: 15px;
+  font-size: 17px;
   padding: 8px;
   margin-left: 23px;
   margin-bottom: -5px;
