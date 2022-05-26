@@ -24,6 +24,8 @@ export default function WeatherForcast(props) {
                   <WeatherForcastDaily data={dailyFrocast} />
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>
@@ -35,14 +37,14 @@ export default function WeatherForcast(props) {
     let latitude = props.coordinates.lat;
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleForcast);
-   return (
-     <ReactLoading
-       className="d-flex flex-wrap content-center justify-center w-100 h-100"
-       type="bubbles"
-       color="#ffe168"
-       height={135}
-       width={115}
-     />
-   );
+    return (
+      <ReactLoading
+        className="d-flex flex-wrap content-center justify-center w-100 h-100"
+        type="bubbles"
+        color="#ffe168"
+        height={135}
+        width={115}
+      />
+    );
   }
 }
