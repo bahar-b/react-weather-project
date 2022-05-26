@@ -13,48 +13,15 @@ export default function WeatherForcast(props) {
     return (
       <div className="WeatherForcast">
         <div className="row column-group">
-          <div className="col forcast-columns">
-            <WeatherForcastDaily data={forcast}/>
-          </div>
-          <div className="col forcast-columns">
-            Mon,10
-            <br />
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt=""
-            />
-            <br />9 / 13
-          </div>
-          <div className="col forcast-columns">
-            Tue,11
-            <br />
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt=""
-            />
-            <br />
-            11 / 17
-          </div>
-          <div className="col forcast-columns">
-            Wed,12
-            <br />
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt=""
-            />
-            <br />
-            6/ 9
-          </div>
-          <div className="col forcast-columns">
-            Thu,13
-            <br />
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-              alt=""
-            />
-            <br />
-            12/ 15
-          </div>
+          {forcast.map(function (dailyFrocast, index) {
+            if (index < 5) {
+              return (
+                <div className="col forcast-columns">
+                  <WeatherForcastDaily data={dailyFrocast} />
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     );
