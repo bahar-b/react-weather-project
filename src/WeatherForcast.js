@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import WeatherForcastDaily from "./WeatherForcastDaily";
+import ReactLoading from "react-loading";
 
 export default function WeatherForcast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forcast, setForacast] = useState("");
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
   function handleForcast(response) {
     setLoaded(true);
     setForacast(response.data.daily);
@@ -31,5 +35,14 @@ export default function WeatherForcast(props) {
     let latitude = props.coordinates.lat;
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleForcast);
+   return (
+     <ReactLoading
+       className="d-flex flex-wrap content-center justify-center w-100 h-100"
+       type="bubbles"
+       color="#ffe168"
+       height={135}
+       width={115}
+     />
+   );
   }
 }

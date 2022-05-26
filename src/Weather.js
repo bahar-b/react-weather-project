@@ -51,7 +51,7 @@ export default function Weather(props) {
     );
   } else {
     searchCity();
-    <ReactLoading
+    return <ReactLoading
       className="d-flex flex-wrap content-center justify-center w-100 h-100"
       type="bubbles"
       color="#ffe168"
