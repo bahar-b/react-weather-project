@@ -16,7 +16,7 @@ export default function Weather(props) {
       tempMin: Math.round(response.data.main.temp_min),
       city: response.data.name,
       country: response.data.sys.country,
-      coordinate:response.data.coord,
+      coordinate: response.data.coord,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       date: new Date(response.data.dt * 1000),
@@ -51,12 +51,14 @@ export default function Weather(props) {
     );
   } else {
     searchCity();
-    return <ReactLoading
-      className="d-flex flex-wrap content-center justify-center w-100 h-100"
-      type="bubbles"
-      color="#ffe168"
-      height={667}
-      width={375}
-    />;
+    return (
+      <ReactLoading
+        className="d-flex flex-wrap content-center justify-center w-100 h-100"
+        type="bubbles"
+        color="#ffe168"
+        height={667}
+        width={375}
+      />
+    );
   }
 }
